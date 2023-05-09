@@ -1,0 +1,28 @@
+//Libraries
+#include <SoftwareSerial.h>
+
+//Variables
+SoftwareSerial BT(2,13); 
+int led = 10;
+char a;
+
+void setup() {
+  pinMode(led,OUTPUT);
+  BT.begin(9600);
+  Serial.println("Hello from Arduino");
+}
+
+void loop() {
+  if (BT.available())
+  {
+    a=(BT.read());
+    if (a=='1')
+    {
+      digitalWrite(led, HIGH);
+    }
+    if (a=='2')
+    {
+      digitalWrite(led, LOW);
+    }
+  }
+}
